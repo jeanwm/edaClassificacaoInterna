@@ -30,16 +30,36 @@ void bubblesort(int v[], int n) {
 }
 
 int main() {
-	int n, i;
+	int n, i, j;
 	
-	printf("Por favor, informe o tamanho do vetor: ");
-	scanf("%d", &n);
+	int seed = time(NULL);
+	srand(seed);
+	
+	do {
+		printf("Por favor, informe o tamanho do vetor: ");
+		scanf("%d", &n);
+		
+		if (n <= 0) {
+			printf("Erro: Informe um valor maior do que 0! \n");
+		}
+		
+	} while(n <= 0);
+	
+	
+	printf("Informe a base da randomizacao: ");
+	scanf("%d", &j);
+	
+	if (j <= 0) {
+		j = 1;
+	}
 	
 	int* v = (int*) malloc(sizeof(int) * n);
 	
 	for (i = 0; i < n; i++) {
-		v[i] = rand() % 100;
+		v[i] = rand() % j;
 	}
 	
 	bubblesort(v, n);
+	
+	return 0;
 }
